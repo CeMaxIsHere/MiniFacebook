@@ -15,12 +15,9 @@
 	<?php
 		require('connexion.php'); // page contenant la classe connexion et les fonctions de connexion à la BDD
 		$appliBD = new Connexion();	// Objet de connexion
-
+		 // Selectionne la liste des gens ajouté dans la BDD
 		// Si il y'a pas de parametre dans l'url ( get ) -> affiche erreur 404 autre page
-		if(!$_GET){
-				include("ERROR404.html");
-				die();
-		}
+		
 
 
 		// $checkIdPersonne = $appliBD->checkIdPersonne($_GET["id"]);
@@ -30,16 +27,16 @@
 		 // var_dump($appliBD->checkIdPersonne($_GET["id"]));
 
 		
-
-		$checkId = $appliBD->checkIdPersonne();
-
-		foreach($checkId as $value){
-			echo "$value->Id <br/>";
-		
+		if(!$_GET){
+				include("ERROR404.html");
+				die();
 		}
 
 
-		if(in_array($_GET["id"], $checkId) == $_GET["id"])
+		
+
+		/*
+		if(in_array($_GET["id"], $checkId))
 		{
 			echo $_GET["id"]." existe";
 			die();
@@ -47,14 +44,23 @@
 			echo $_GET["id"]." existe pas";
 			die();
 		}
-	
+		*/
 
+
+		
 		if(isset($_GET)){
+			$profil = $appliBD->selectPersonneById($_GET["id"]);
+			if($profil == null){
+				include("ERROR404.html");
+				die();
+			}
+
 			$profil = $appliBD->selectPersonneById($_GET["id"]); // Selectionne la liste des gens ajouté dans la BDD
 			$profilHobby = $appliBD->getPersonneHobby($_GET["id"]); // affiche les hobby du profil selon l'id de la personne
 			$profilMusique = $appliBD->getPersonneMusique($_GET["id"]); // affiche les musique du profil selon l'id de la personne
 			$profilRelation = $appliBD->getRelation($_GET["id"]); // affiche les relations du profil selon l'id de la personnes		
 		}
+		
 	
 	?>
 	<!-- barre continu en-tête avec les liens --> 

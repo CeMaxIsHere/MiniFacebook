@@ -20,17 +20,6 @@
 
 
 
-	$hobbies = array(
-
-		foreach($i = 0; $i < ; $i++){
-			$hobbies[$i];
-
-		}
-
-
-
-
-	);
 
 
 
@@ -67,14 +56,20 @@
 
 	// permet de verifier si un hobby à bien été ajouter dans la bdd
 	// $appliBD->insertHobby("");
-/*
+
 $typeHobby = $appliBD->selectAllHobbies();
 echo "<ul>";
 foreach($typeHobby as $value){
-	echo "<li>"."$value->Type"."</li>";
+	echo "<li>"."$value->Type"."$value->Id"."</li>";
 }
 echo "</ul>";
-	*/
+	
+
+foreach($typeHobby as $value){
+	echo "<input type=\"checkbox\" name=\"hobbies\" value=\"$value->Id\"> <label for=\"Tennis\">$value->Type $value->Id</label>";
+}
+
+
 
 
 /*

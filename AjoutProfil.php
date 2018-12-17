@@ -15,7 +15,8 @@
 		require('connexion.php'); // page contenant la classe connexion et les fonctions de connexion à la BDD
 		$appliBD = new Connexion();	// Objet de connexion
 		$profil = $appliBD->selectAllPersonne(); // Selectionne toutes les personnes de la table Personne
-		
+		$Hobbies = $appliBD->selectAllHobbies();
+		$Musique = $appliBD->selectAllMusique();
 	?>
 
 
@@ -53,7 +54,7 @@
 				</tr>
 				<tr>
 					<td>Statut :</td>
-					<td class="textAlignRight"> 
+					<td class="textAlignRight">
 						<select name="status">
 							<option value="celibataire">Célibataire</option>
 							<option value="en Couple">En couple</option>
@@ -64,19 +65,21 @@
 				<tr>
 					<td>Hobbies :</td>
 					<td class="textAlignRight">
-						<input type="checkbox" name="hobbies" value="1" id="Tennis"> <label for="Tennis">Tennis</label>
-						<input type="checkbox" name="hobbies" value="1" id="Foot"><label for="Foot">Foot</label> 
-						<input type="checkbox" name="hobbies" value="1" id="Marche"><label for="Marche">Marche</label>
-						<input type="checkbox" name="hobbies" value="1" id="Guitare"><label for="Guitare">Guitare</label>
+						<?php
+						foreach($Hobbies as $value){
+							echo "<input type=\"checkbox\" name=\"Hobbies[]\" value=\"$value->Id\" id=\"$value->Type\"> <label for=\"$value->Type\">$value->Type</label>";
+						}
+						?>
 					</td>
 				</tr>
 				<tr>
 					<td>Musique :</td>
 					<td class="textAlignRight">
-						<input type="checkbox" name="Rock" id="Rock"><label for="Rock">Rock</label>
-						<input type="checkbox" name="Metal" id="Metal"><label for="Metal">Metal</label> 
-						<input type="checkbox" name="Rap" id="Rap"><label for="Rap">Rap</label> 
-						<input type="checkbox" name="Hiphop" id="Hiphop"><label for="Hiphop">Hip-Hop</label> 
+						<?php
+						foreach($Musique as $value){
+							echo "<input type=\"checkbox\" name=\"Musique[]\" value=\"$value->Id\" id=\"$value->Type\"> <label for=\"$value->Type\">$value->Type</label>";
+						}
+						?>
 					</td>
 				</tr>
 				<tr>
