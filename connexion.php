@@ -65,7 +65,6 @@ class Connexion{
 		"INSERT INTO Personne (Nom, Prenom, URL_Photo, Date_Naissance, Statut_couple) values (:Nom, :Prenom, :URL, :Date_naissance, :Statut)");			
 		$requete_prepare->execute(
 			array( 'Nom' => "$nom", 'Prenom' => "$prenom", 'URL' => "$URL", 'Date_naissance' => "$date", 'Statut' => "$Statut"));
-
 	}
 
 	//permet d'inserer une relation entre l'idée du dernier contact ajouté et d'un hobby
@@ -73,7 +72,7 @@ class Connexion{
 		$requete_prepare=$this->connexion->prepare(
 		"INSERT INTO RelationHobby (Personne_Id, Hobby_Id) values (:Personne_Id, :Hobby_Id)");			
 		$requete_prepare->execute(
-			array( 'Personne_Id' => "$id", 'Hobby_Id' => "$hobbyId"));
+			array( 'Personne_Id' => $id, 'Hobby_Id' => $hobbyId));
 	}
 
 	//permet d'inserer une relation entre l'idée du dernier contact ajouté et d'une Musique
@@ -82,6 +81,14 @@ class Connexion{
 		"INSERT INTO RelationMusique (Personne_Id, Musique_Id) values (:Personne_Id, :Musique_Id)");			
 		$requete_prepare->execute(
 			array( 'Personne_Id' => "$id", 'Musique_Id' => "$musiqueId"));
+	}
+
+	// permet(tra) d'inserer la relation entre personne
+	public function insertRelationPersonne($id, $relationPersonne, $type){
+	$requete_prepare=$this->connexion->prepare(
+	"INSERT INTO RelationPersonne (Personne_Id, Relation_Id, Type) values (:Personne_Id, :Relation_Id, :Type)");			
+	$requete_prepare->execute(
+	array( 'Personne_Id' => $id, 'Relation_Id' => $relationPersonne, 'Type' => $type));
 	}
 
 
@@ -99,7 +106,7 @@ class Connexion{
 	// selection des types de hobbies existant dans la bdd
 	function selectAllHobbies(){			
 			$requete_prepare=$this->connexion->prepare(
-				"SELECT Type FROM Hobby");
+				"SELECT * FROM Hobby");
 			$requete_prepare->execute();
 			$resultat=$requete_prepare->fetchAll(PDO::FETCH_OBJ);
 			return $resultat;
@@ -109,7 +116,7 @@ class Connexion{
 	// selection des types de musique existant dans la bdd
 	function selectAllMusique(){			
 			$requete_prepare=$this->connexion->prepare(
-				"SELECT Type FROM Musique");
+				"SELECT * FROM Musique");
 			$requete_prepare->execute();
 			$resultat=$requete_prepare->fetchAll(PDO::FETCH_OBJ);
 			return $resultat;
@@ -216,7 +223,7 @@ class Connexion{
 		$requete_prepare->execute();
 		$lastEntry = $requete_prepare->fetch(PDO::FETCH_OBJ);
 		return $lastEntry;	
-	}x
+	}
 
 	/*public function longueurHobby(){
 		$requete_prepare = $this->connexion->prepare(

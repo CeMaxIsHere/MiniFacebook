@@ -17,14 +17,17 @@
 		require('connexion.php'); // page contenant la classe connexion et les fonctions de connexion à la BDD
 		$appliBD = new Connexion();	// Objet de connexion
 		
-
-
+		
+		
 		// Si il y'a des informations dans POST, alors insert personne selon les informations
+
+		
 		if($_POST){
 			$appliBD->insertPersonne($_POST["nom"], $_POST["Prenom"], $_POST["photoProfil"], $_POST["dateNaissance"], $_POST["status"]);
 			$lastIdPersonne = $appliBD->getLastEntry(); 
 			$hobbies = $_POST["Hobbies"];
 			$musique = $_POST["Musique"];
+			
 
 			foreach( $hobbies as $value){
 				$appliBD->insertHobbyPersonne($lastIdPersonne->Id, $value);
@@ -32,9 +35,18 @@
 			foreach( $musique as $value){
 				$appliBD->insertMusiquePersonne($lastIdPersonne->Id, $value);
 			}
-			
-			
+
+			if($_POST["Relation"]){
+		
+				$relations = $_POST["Relation"];
+				foreach( $relations as $key=>$value){
+					if($value != ""){
+						$appliBD->insertRelationPersonne($lastIdPersonne->Id,$key,$value);
+					}
+				}
+			}	
 		}
+		
 	
 		$profil = $appliBD->selectAllPersonne();
 	?>

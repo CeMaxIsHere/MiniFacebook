@@ -111,8 +111,8 @@
 				echo "<div class=\"Contacts clair\">";
 				echo "<img class=\"imageContact\" src=\"$value->URL_Photo \" alt=\"image de Contact\">" ;
 				echo "<p>"."$value->Nom"." "."$value->Prenom"."</p>"; 
-				echo "<p>"."<select>
-								<option value=\"\"></option>
+				echo "<p>"."<select name=\"Relation[$value->Id]\">
+								<option></option>
 								<option value=\"Famille\">Famille</option>
 								<option value=\"Collegue\">Collègue</option>
 								<option value=\"Ami\">Ami</option>
