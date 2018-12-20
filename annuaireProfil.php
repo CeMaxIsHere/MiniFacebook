@@ -31,22 +31,6 @@
 				include("ERROR404.html");
 				die();
 		}
-
-
-		
-
-		/*
-		if(in_array($_GET["id"], $checkId))
-		{
-			echo $_GET["id"]." existe";
-			die();
-		}else{
-			echo $_GET["id"]." existe pas";
-			die();
-		}
-		*/
-
-
 		
 		if(isset($_GET)){
 			$profil = $appliBD->selectPersonneById($_GET["id"]);
@@ -60,8 +44,7 @@
 			$profilMusique = $appliBD->getPersonneMusique($_GET["id"]); // affiche les musique du profil selon l'id de la personne
 			$profilRelation = $appliBD->getRelation($_GET["id"]); // affiche les relations du profil selon l'id de la personnes		
 		}
-		
-	
+			
 	?>
 	<!-- barre continu en-tête avec les liens --> 
 	<div id="top_head"> 

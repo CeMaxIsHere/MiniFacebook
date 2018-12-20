@@ -1,13 +1,14 @@
 body{
 	padding:0px;
 	margin:0px;
-	background-color:#2F4F4F;
+	background-color:#10171e;
 }
 
 #top_head{
 
-	background-color: #396060;
+	background-color: #1c2938;
 	height:60px;
+	border-bottom:1px solid black;
 }
 .droite{
 	float:right;
@@ -16,7 +17,7 @@ body{
 	line-height: 35px;
 	border-radius:100px;
 	text-align:center;
-	background-color:rgb(38, 120, 150);
+	background-color:#cd9b22;
 	color:white;
 	margin-right:50px;
 	margin-top:10px;
@@ -24,16 +25,18 @@ body{
 
 .droite:hover{
 	box-shadow: 0px 0px 8px black;
+	background-color: #e7cb1e;
 }
 
 #Contenu{
 	width:50%;
 	height:100%;
 	color:white;
-	background-color: #396060;
+	background-color: #15202b;
 	margin:0 auto;
 	margin-top:10px;
 	border: 1px solid grey;
+	margin-bottom:50px;
 }
 
 h1{
@@ -69,7 +72,11 @@ table{
 	margin:0 auto;
 	font-size: 15px;
 	width:50%;
-	border: 1px solid grey;
+	border: 1px solid #3c3c3c;
+}
+.Contacts:hover{
+	background-color:#101922;
+	border-color:grey;
 }
 
 .Contacts p{
@@ -85,16 +92,17 @@ table{
 	font-size: 25px;
 	width:80%;
 	height:120px;
-	background-color:#396060; 
+	 
 	padding:5px;
 	margin-top: 15px;
-	margin-bottom:0px;
-	border: 1px solid grey;
+	margin-bottom:15px;
+	border: 1px solid #3c3c3c;
 }
 
 .listeContacts:hover{
 	box-shadow: 0px 0px 5px black;
-	background-color:#2F4F4F;
+	background-color:#101922;
+	border-color:grey;
 }
 
 .listeContacts p{
@@ -204,6 +212,7 @@ table{
     height: 200px;
     margin: 0 auto;
     margin-bottom: 0px; 
+    margin-top:20px;
     padding-top: 20px;
     border: 1px solid grey;
 }
@@ -214,16 +223,17 @@ table{
 	margin:0 auto;
 	font-size: 15px;
 	height:120px;
-	background-color:#396060; 
+	
 	padding:5px;
 	margin-top: 15px;
-	margin-bottom:0px;
+	margin-bottom:20px;
 	border: 1px solid grey;
 }
 
 .listeContactsRelation:hover{
 	box-shadow: 0px 0px 5px black;
-	background-color:#2F4F4F;
+	background-color:#101922;
+	border-color:grey;
 
 }
 .listeContactsRelation p{

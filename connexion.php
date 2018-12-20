@@ -245,7 +245,35 @@ class Connexion{
 
 	}
 
+	public function inscription(){
 
+		$this->insertPersonne($_POST["nom"], $_POST["Prenom"], $_POST["photoProfil"], $_POST["dateNaissance"], $_POST["status"]);
+		$lastIdPersonne = $this->getLastEntry(); 
+
+		if(isset($_POST["Hobbies"])){
+			$hobbies = $_POST["Hobbies"];
+			foreach( $hobbies as $value){
+				$this->insertHobbyPersonne($lastIdPersonne->Id, $value);
+			}
+		}
+
+		if(isset($_POST["Musique"])){
+			$musique = $_POST["Musique"];
+			foreach( $musique as $value){
+				$this->insertMusiquePersonne($lastIdPersonne->Id, $value);
+			}
+		}
+
+		if(isset($_POST["Relation"])){
+			$relations = $_POST["Relation"];
+			foreach( $relations as $key=>$value){
+				if($value != ""){
+					$this->insertRelationPersonne($lastIdPersonne->Id,$key,$value);
+				}
+			}
+		}	
+
+	}
 
 }	
 ?>
