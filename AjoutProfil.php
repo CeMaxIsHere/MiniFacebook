@@ -9,19 +9,16 @@
 	 <title>Annuaire - Ajouter un contact</title>
 </head>
 
-<body>
-	
+<body>	
 	<?php
 		require('connexion.php'); // page contenant la classe connexion et les fonctions de connexion à la BDD
-		$appliBD = new Connexion();	// Objet de connexion
-		$profil = $appliBD->selectAllPersonne(); // Selectionne toutes les personnes de la table Personne
-		$Hobbies = $appliBD->selectAllHobbies();
-		$Musique = $appliBD->selectAllMusique();
+		$appliBD = new Connexion();	// Nouvel Objet de connexion : utiliser pour chaque appel de fonction
+		$profil = $appliBD->selectAllPersonne(); // Selectionne toutes les personnes de la bdd et les mets en tableau
+		$hobbies = $appliBD->selectAllHobbies(); // Selectionne tous les Hobbies de la bdd et les mets en tableau
+		$musique = $appliBD->selectAllMusique(); // Selectionne toutes les musiques de la bdd et les mets en tableau
 	?>
 
-
-
-	<!-- barre continu en-tête avec les liens -->
+<!-- barre continu en-tête avec les liens -->
 	<div id="top_head">
 		<a href="listeContact.php">
 			<div class="droite">
@@ -30,10 +27,11 @@
 		</a>
 	</div>
 
-	<!-- Div contenant le titre de la page ainsi que le formulaire d'ajout d'un nouveau contact et la list des contacts en dessous-->
+<!-- Div contenant le titre de la page ainsi que le formulaire d'ajout d'un nouveau contact -->
 	<div id="Contenu">
+		<!-- Titre de la page -->
 		<h1>Ajouter un contact</h1>
-
+<!-- formulaire qui envois les donné par le serveur  -->
 		<form method="POST" action="listeContact.php">
 			<table>
 				<tr>
@@ -65,20 +63,22 @@
 				<tr>
 					<td>Hobbies :</td>
 					<td class="textAlignRight">
+<!-- Affiche tout les hobbies existants en BDD et envois un tableau avec les valeurs pour chaque hobby si coché -->
 						<?php
-						foreach($Hobbies as $value){
-							echo "<input type=\"checkbox\" name=\"Hobbies[]\" value=\"$value->Id\" id=\"$value->Type\"> <label for=\"$value->Type\">$value->Type</label>";
-						}
+							foreach($hobbies as $value){
+								echo "<input type=\"checkbox\" name=\"Hobbies[]\" value=\"$value->Id\" id=\"$value->Type\"> <label for=\"$value->Type\">$value->Type</label>";
+							}
 						?>
 					</td>
 				</tr>
 				<tr>
 					<td>Musique :</td>
 					<td class="textAlignRight">
+<!-- Affiche toutes les musiques existants en BDD et envois un tableau avec les valeurs pour chaque musique si coché -->
 						<?php
-						foreach($Musique as $value){
-							echo "<input type=\"checkbox\" name=\"Musique[]\" value=\"$value->Id\" id=\"$value->Type\"> <label for=\"$value->Type\">$value->Type</label>";
-						}
+							foreach($musique as $value){
+								echo "<input type=\"checkbox\" name=\"Musique[]\" value=\"$value->Id\" id=\"$value->Type\"> <label for=\"$value->Type\">$value->Type</label>";
+							}
 						?>
 					</td>
 				</tr>
@@ -89,38 +89,24 @@
 				</tr>
 
 			</table>
-
-		<!--	<div class="Contacts clair">
-				<img class="imageContact" src="imgs/avatar_defaut.png" alt="image de Contact"> 
-				<p>
-					JEAN-PHILLIPE DE MARINIAQUE - CELIBATAIRE
-				</p> 
-				<p>
-					<select>
-						<option value="Relation">Relation</option>
-						<option value="Famille">Famille</option>
-						<option value="Collegue">Collègue</option>
-						<option value="Ami">Ami</option>
-					</select>
-				</p>
-			</div>
-		-->
-		<?php
-			foreach($profil as $value){
-				
-				echo "<div class=\"Contacts clair\">";
-				echo "<img class=\"imageContact\" src=\"$value->URL_Photo \" alt=\"image de Contact\">" ;
-				echo "<p>"."$value->Nom"." "."$value->Prenom"."</p>"; 
-				echo "<p>"."<select name=\"Relation[$value->Id]\">
-								<option></option>
-								<option value=\"Famille\">Famille</option>
-								<option value=\"Collegue\">Collègue</option>
-								<option value=\"Ami\">Ami</option>
-							</select>"."</p>";		
-				echo "</div>";
-				echo "</a>";
-			}
-		?>
+<!-- Passe en revue toutes les personnes ajoutées de la base de données, creer un tableau d'envois de donnée
+et recupère l'id de chaque personne afin d'en faire une relation qui sera egal à la valeur des options du select -->
+			<?php
+				foreach($profil as $value){
+					
+					echo "<div class=\"Contacts clair\">";
+					echo "<img class=\"imageContact\" src=\"$value->URL_Photo \" alt=\"image de Contact\">" ;
+					echo "<p>"."$value->Nom"." "."$value->Prenom"."</p>"; 
+					echo "<p>"."<select name=\"Relation[$value->Id]\">
+									<option></option>
+									<option value=\"Famille\">Famille</option>
+									<option value=\"Collegue\">Collègue</option>
+									<option value=\"Ami\">Ami</option>
+								</select>"."</p>";		
+					echo "</div>";
+					echo "</a>";
+				}
+			?>
 
 			<table>
 				<tr>
@@ -129,6 +115,7 @@
 					</td>
 				</tr>
 			</table>
+
 		</form>
 	</div>
 </body>

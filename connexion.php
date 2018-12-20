@@ -3,9 +3,7 @@
 // créaction de la classe Connexion pour toutes les fonctions qui demande à ce connecter à la base de données
 class Connexion{
 		private $connexion;
-
-
-		// Quand on appel la class, il fait la connexion car la connexion est dans le construct
+		// la connexion est dans le construct de la class
         public function __construct(){
         	$PARAM_hote='localhost';
 
@@ -29,15 +27,13 @@ class Connexion{
             }
         }
 
-
-	// Fonction retournant la connexion
+// Fonction retournant la connexion
     public function getConnexion(){
         return $this->connexion;
     }
 
-
-    // Permet d'ajouter un hobby (avec verification quand reussi)
-	function insertHobby($hobby){
+// Permet d'ajouter un hobby (avec verification quand reussi)
+	public function insertHobby($hobby){
 		try {			
 			$requete_prepare=$this->connexion->prepare(
 			"INSERT INTO Hobby (Type) values (:hobby)");
@@ -50,16 +46,15 @@ class Connexion{
 			return false;
 		}
 	}
-
-	// Permet d'ajouter un type de musique 
-	function insertMusique($Musique){	
+// Permet d'ajouter un type de musique 
+	public function insertMusique($Musique){	
 		$requete_prepare=$this->connexion->prepare(
 			"INSERT INTO Musique (Type) values (:musique)");
 		$requete_prepare->execute(
 			array( 'musique' => "$Musique"));
 	}
 
-	// permet d'ajouter un personne 
+// permet d'ajouter un personne 
 	public function insertPersonne($nom, $prenom, $URL, $date, $Statut){	
 		$requete_prepare=$this->connexion->prepare(
 		"INSERT INTO Personne (Nom, Prenom, URL_Photo, Date_Naissance, Statut_couple) values (:Nom, :Prenom, :URL, :Date_naissance, :Statut)");			
@@ -67,7 +62,7 @@ class Connexion{
 			array( 'Nom' => "$nom", 'Prenom' => "$prenom", 'URL' => "$URL", 'Date_naissance' => "$date", 'Statut' => "$Statut"));
 	}
 
-	//permet d'inserer une relation entre l'idée du dernier contact ajouté et d'un hobby
+//permet d'inserer une relation entre l'Id du dernier contact ajouté et d'un hobby
 	public function insertHobbyPersonne($id, $hobbyId){
 		$requete_prepare=$this->connexion->prepare(
 		"INSERT INTO RelationHobby (Personne_Id, Hobby_Id) values (:Personne_Id, :Hobby_Id)");			
@@ -75,7 +70,7 @@ class Connexion{
 			array( 'Personne_Id' => $id, 'Hobby_Id' => $hobbyId));
 	}
 
-	//permet d'inserer une relation entre l'idée du dernier contact ajouté et d'une Musique
+//permet d'inserer une relation entre l'Id du dernier contact ajouté et d'une Musique
 	public function insertMusiquePersonne	($id, $musiqueId){
 		$requete_prepare=$this->connexion->prepare(
 		"INSERT INTO RelationMusique (Personne_Id, Musique_Id) values (:Personne_Id, :Musique_Id)");			
@@ -83,7 +78,7 @@ class Connexion{
 			array( 'Personne_Id' => "$id", 'Musique_Id' => "$musiqueId"));
 	}
 
-	// permet(tra) d'inserer la relation entre personne
+// permet d'inserer la relation entre l'id d'une personne, l'id d'une autre et le type de relation que nous voulons
 	public function insertRelationPersonne($id, $relationPersonne, $type){
 	$requete_prepare=$this->connexion->prepare(
 	"INSERT INTO RelationPersonne (Personne_Id, Relation_Id, Type) values (:Personne_Id, :Relation_Id, :Type)");			
@@ -92,8 +87,8 @@ class Connexion{
 	}
 
 
-	// affiche les hobby de la bdd
-	function afficherHobby(){	
+// affiche le type de hobbies dans la table hobby
+	public function afficherHobby(){	
 		$requete_prepare=$this->connexion->prepare(
 			"SELECT Type FROM Hobby");
 		$requete_prepare->execute();
@@ -101,10 +96,8 @@ class Connexion{
 		echo ($resultat[0]->Type);	
 	}
 
-
-
-	// selection des types de hobbies existant dans la bdd
-	function selectAllHobbies(){			
+// selection de tout dans la table hobby
+	public function selectAllHobbies(){			
 			$requete_prepare=$this->connexion->prepare(
 				"SELECT * FROM Hobby");
 			$requete_prepare->execute();
@@ -113,8 +106,8 @@ class Connexion{
 	}
 
 
-	// selection des types de musique existant dans la bdd
-	function selectAllMusique(){			
+// selection de tout dans la table Musique
+	public function selectAllMusique(){			
 			$requete_prepare=$this->connexion->prepare(
 				"SELECT * FROM Musique");
 			$requete_prepare->execute();
@@ -122,9 +115,8 @@ class Connexion{
 			return $resultat;
 	}
 
-
-	// Selection tout les champs de toutes les personnes ajouté a la BDD
-	function selectAllPersonne(){			
+// Selection tout les champs de toutes les personnes ajoutées a la BDD
+	public function selectAllPersonne(){			
 			$requete_prepare=$this->connexion->prepare(
 				"SELECT * FROM Personne");
 			$requete_prepare->execute();
@@ -134,8 +126,8 @@ class Connexion{
 
 
 
-	// selection une personne selon son id
-	function selectPersonneById(int $id){			
+// selectionne tout les information d'une personne selon son id
+	public function selectPersonneById(int $id){			
 			$requete_prepare=$this->connexion->prepare(
 				"SELECT * FROM Personne WHERE Id = :id");
 			$requete_prepare->execute(array('id' => $id));
@@ -145,8 +137,8 @@ class Connexion{
 
 
 
-	// on utilise % avant la variable dans l'execute pour dire que il y'a d'autre character possible  avant la recherche possible. 
-	function selectPersonneByNomPrenomLike($pattern){		
+// fonction faisant une recherche du nom et prenom selon le $pattern 
+	public function selectPersonneByNomPrenomLike($pattern){		
 		$requete_prepare=$this->connexion->prepare(
 			"SELECT * FROM Personne WHERE Nom LIKE :nom
 			OR Prenom LIKE :prenom");
@@ -156,9 +148,8 @@ class Connexion{
 	}
 
 
-
-	// Fonction qui retourne la liste des hobby selon l'id de la personne
-	function getPersonneHobby($personneId){
+// Fonction qui retourne la liste des hobby selon l'id de la personne
+	public function getPersonneHobby($personneId){
 		
 		$requete_prepare = $this->connexion->prepare(
 			"SELECT Type from Hobby h
@@ -172,8 +163,8 @@ class Connexion{
 
 
 
-	// Fonction qui retourne la liste des musique selon l'id de la personne
-	function getPersonneMusique($personneId){
+// Fonction qui retourne la liste des musique selon l'id de la personne
+	public function getPersonneMusique($personneId){
 		
 		$requete_prepare = $this->connexion->prepare(
 			"SELECT Type from Musique m
@@ -185,24 +176,7 @@ class Connexion{
 		return $musique;
 	}
 
-
-
-	// ------ A verifier / pas utiliser
-	function getRelationPersonne($personneId){
-		
-		$requete_prepare = $this->connexion->prepare(
-			"SELECT rp.Type from Hobby h
-			INNER JOIN RelationPersonne rp On rp.Personne_Id = p.Id
-			WHERE rp.Personne_Id = :id");
-		$requete_prepare->execute (
-			array("id" => $personneId));
-		$relationPersonne = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
-		return $relationPersonne;
-	}
-
-
-
-	// Affiche les relations d'un contact via son ID
+// Affiche les relations d'un contact via son ID
 	public function getRelation($personneId){
 		$requete_prepare = $this->connexion->prepare(
 		"SELECT p.Nom,p.Prenom,rp.Type,p.URL_Photo,p.Statut_couple,p.Id from Personne p
@@ -216,7 +190,7 @@ class Connexion{
 
 
 
-	// Fonction retournant l'id du dernier contact ajouté
+// Fonction retournant l'id du dernier contact ajouté
 	public function getLastEntry(){
 		$requete_prepare = $this->connexion->prepare(
 		"SELECT MAX(Id) as Id FROM Personne");
@@ -225,25 +199,9 @@ class Connexion{
 		return $lastEntry;	
 	}
 
-	/*public function longueurHobby(){
-		$requete_prepare = $this->connexion->prepare(
-		"SELECT MAX(Id) as Id FROM Personne");
-		$requete_prepare->execute();
-		$lastEntry = $requete_prepare->fetch(PDO::FETCH_OBJ);
-		return $lastEntry;	
-	}
-	*/
 
-
-	// Fonction qui verifie si un ID Existe
-	public function checkIdPersonne(){
-            $requete_prepare = $this->connexion->prepare(
-			"SELECT Id FROM Personne ");
-			$requete_prepare->execute();
-			$checkID = $requete_prepare->fetchAll(PDO::FETCH_OBJ);		
-			return $checkID;
-
-	}
+/*Cette fonction contient le code permetant de faire tout les verifications de POST et les insertions des données pour 
+ajouter de nouveau contact */
 
 	public function inscription(){
 
@@ -255,7 +213,7 @@ class Connexion{
 			foreach( $hobbies as $value){
 				$this->insertHobbyPersonne($lastIdPersonne->Id, $value);
 			}
-		}
+	}
 
 		if(isset($_POST["Musique"])){
 			$musique = $_POST["Musique"];
@@ -275,5 +233,7 @@ class Connexion{
 
 	}
 
+
+// fin de la class Connexion
 }	
 ?>
