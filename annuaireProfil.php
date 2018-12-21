@@ -63,10 +63,10 @@ on appel les elements que nous voulons passé dans $profil -->
 	            	<?php echo $profil->Nom." ".$profil->Prenom; ?>	            
 	           	</p>
 	            <p>
-	            	<?php echo $profil->Date_Naissance; ?>	            		
+	            	Date de Naissance: <?php echo $profil->Date_Naissance; ?>	            		
 	            </p>
 	            <p>
-	            	<?php echo $profil->Statut_couple; ?>
+	            	Status : <?php echo $profil->Statut_couple; ?>
 	            </p> 
 			</div>    
 
