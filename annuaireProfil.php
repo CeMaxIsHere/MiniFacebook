@@ -5,10 +5,8 @@
 	 <meta charset="utf-8">
 	 <meta http-equiv="x-ua-compatible" content="ie=edge">
 	 <meta name="viewport" content="width=device-width, initial-scale=1">
-	 <link href="style2.css" rel="stylesheet">
+	 <link href="style.css" rel="stylesheet">
 	 <title>Annuaire - Profil</title>
-
-  
 </head>
 
 <body>
@@ -93,7 +91,7 @@ on appel les elements que nous voulons passé dans $profil -->
             </div> 
             <div id="contenu_hobbies">
                 <h4>Hobbies</h4>
-				<div id = "hoppies">
+				<div id = "hobbies">
                  	<?php  
 // Passe en boucle tout les hobbies et ressort la valeur de Type dans une liste non ordonée
                   		echo "<ul>";

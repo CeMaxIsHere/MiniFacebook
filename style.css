@@ -1,0 +1,287 @@
+body{
+	padding:0px;
+	margin:0px;
+	background-color:#10171e;
+}
+
+/*  Affect tout les liens de la page  */
+a {
+	text-decoration:none;
+}
+/*   dans page AjoutProfil.php -> titre avant la liste des connaissances  */
+#connaissances{
+	text-align:center;
+}
+
+/*  dans toutes les pages, barre contenant les liens au autres page tout en haut */ 
+#top_head{
+	background-color: #1c2938;
+	height:60px;
+	border-bottom:1px solid black;
+}
+
+/* liens de droite dans la barre top_head */ 
+.droite{
+	float:right;
+	height:40px;
+	width:150px;
+	line-height: 35px;
+	border-radius:100px;
+	text-align:center;
+	background-color:#cd9b22;
+	color:white;
+	margin-right:50px;
+	margin-top:10px;
+}
+/* passage au dessus avec souris du lien dans la barre top_head*/ 
+.droite:hover{
+	box-shadow: 0px 0px 8px black;
+	background-color: #e7cb1e;
+}
+/* Contient tout le corp de la page, dans chaque page */ 
+#Contenu{
+	width:50%;
+	height:100%;
+	color:white;
+	background-color: #15202b;
+	margin:0 auto;
+	margin-top:10px;
+	border: 1px solid grey;
+	margin-bottom:50px;
+}
+
+/* affect tout les titre 1 */
+h1{
+	text-align: center;
+}
+/* affect toutes les tables  */ 
+table{
+	margin:auto;
+	border-collapse: separate;
+	border-spacing: 10px 20px;
+}
+
+/*  Centre les boutons du formulaire en page AjoutProfil.php  */ 
+.boutonCentrer{
+	text-align:center;
+}
+ /*  align le contenu à gauche  */
+.textAlignLeft{
+	text-align: left;
+}
+/*  affect l'image dans la liste des relations en page AjoutProfil.php  */ 
+.imageContact{
+	width:70px;
+	height:70px;
+	border-radius:50%;
+	float:left;
+	margin-top:7px;
+	margin-left:7px;
+	border: 1px solid white;
+}
+/* affect la div contenant les info des relations possible en page AjoutProfil.php */ 
+.Contacts{
+	vertical-align: center;
+	margin:0 auto;
+	font-size: 15px;
+	width:50%;
+	border: 1px solid #3c3c3c;
+	border-top-left-radius:25px;
+	border-bottom-right-radius: 25px;
+	margin-bottom:5px;
+}
+/* affect au passage de la souris, la class .Contacts */ 
+.Contacts:hover{
+	background-color:#101922;
+	border-color:grey;
+}
+/* affect les paragraphes dans la class .Contacts */ 
+.Contacts p{
+	margin-left:10px;
+	text-align: center;
+	color:white;
+	padding:1px;
+
+}
+/* affect la div contenant les informations des personnes dans la page listeContact.php */ 
+.listeContacts{	
+	margin:0 auto;
+	font-size: 25px;
+	width:80%;
+	height:120px;
+	 
+	padding:5px;
+	margin-top: 15px;
+	margin-bottom:15px;
+	border: 1px solid #3c3c3c;
+	border-top-left-radius:25px;
+	border-bottom-right-radius: 25px;
+}
+/* affect au passage de la souris, la class .listeContacts */ 
+.listeContacts:hover{
+	box-shadow: 0px 0px 5px black;
+	background-color:#101922;
+	border-color:grey;
+}
+/*  affect les paragraphes de la class .listeContacts  */ 
+.listeContacts p{
+	margin-top:10px;
+	text-align: right;
+	color:white;
+}
+
+/*  affect les images des contacts dans la page listeContact.php  */ 
+.listeContacts .imageContact{
+	width:100px;
+	height:100px;
+	border-radius:50%;
+	float:left;
+	margin-top:7px;
+	margin-left:7px;
+}
+/* affect l'input de la date en page AjoutProfil.php */ 
+.date{
+	height:40px;
+	width:120px;
+	font-size: 15px;
+}
+
+/* affect le l'emplacement du contenu du header du profil dans la page annuaireProfil.php et contient l'image, nom, prenom, date naissance et status de chaque profil */ 
+#profil-data {
+	width: 90%;
+    margin: 0 auto;
+   	color: white;
+  }
+ /* affect les paragraphes dans le header des profils en page annuaireProfil.php */ 
+#profil-data p{
+	font-size:25px;
+	text-align:right;
+}
+/* div regroupant les differentes activité de chaque profil par catégorie ( musique / hobbies )  */ 
+
+#activite {
+    width: 90%;
+    height: 250px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+/* affect les titres des s*/ 
+#activite h2{
+    text-align:center;
+}
+/* affect la div contenant le titre et les relations d'une personne en page annuaireProfil.php */
+#contact {    
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 0px;
+}
+/* div contenant le contenu des musiques du profil en page annuaireProfil.php */ 
+#musique {
+    border-style: solid;
+    border-width: 1px;
+    border-color:grey;
+}
+/* div contenant le titre et la div avec le contenu musique */ 
+#contenu_musique{
+    width: 25%;
+    float: left;
+    margin-left: 80px;
+    margin-top: 20px;   
+}
+/*  affect le h4 dans #cotnenu_musique */ 
+#contenu_musique h4{
+    text-align:center;
+}
+/* div contenant le contenu des hobbies du profil en page annuaireProfil.php */ 
+#hobbies{ 
+     border-style: solid;
+     border-width: 1px;
+     border-color:grey;
+ }
+/* div contenant le titre et la div avec le contenu hobbies */
+ #contenu_hobbies{
+   	width: 25%;
+   	float: right;
+   	margin-right: 80px;
+  	margin-top: 20px;  
+ }
+ /*  affect les h4 dans #contenu_hobbies  */ 
+ #contenu_hobbies h4{
+     text-align:center;
+  }
+ /* affect l'image dans le header du profil en page annuaireProfil.php */ 
+.img_profil{
+    float:left;
+    margin-right: 80px;
+    border-radius:15px;
+  }
+/*  div contenant tout le header du profil en page annuaireProfil.php */
+#profil-header {  
+    width: 90%;
+    height: 200px;
+    margin: 0 auto;
+    margin-bottom: 0px; 
+    margin-top:20px;
+    padding-top: 20px;
+    border: 1px solid grey;
+}
+/* affect les titre 2 de l'id contact  */ 
+#contact h2{
+	text-align:center;
+}
+/* affect la div contenant les informations des personnes en relation du profil en page annuaireProfil.php */ 
+.listeContactsRelation{
+	margin:0 auto;
+	font-size: 15px;
+	height:120px;	
+	padding:5px;
+	margin-top: 15px;
+	margin-bottom:20px;
+	border: 1px solid grey;
+	border-top-left-radius:25px;
+	border-bottom-right-radius: 25px;
+}
+/* affect la div .listeContactsRelation au passage de la sourie par dessus en page annuaireProfil.php */ 
+.listeContactsRelation:hover{
+	box-shadow: 0px 0px 5px black;
+	background-color:#101922;
+	border-color:grey;
+}
+/*  affect les paragraphes de la class .listeContactsRelation en page annuaireProfil.php */ 
+.listeContactsRelation p{
+	margin-top:10px;
+	text-align: right;
+	color:white;
+}
+
+/* affect les images des relations en page annuaireProfil.php */
+.listeContactsRelation .imageContact{
+	width:100px;
+	height:100px;
+	border-radius:50%;
+	float:left;
+	margin-top:3px;
+	margin-left:7px;
+}
+/* affect les listes de l'id #musique en page annuaireProfil.php */ 
+#musique li{
+	font-size:25px;
+}
+/* affect les listes de l'id #hobbies en page annuaireProfil.php*/ 
+#hobbies li{
+	font-size:25px;
+}
+/* affect le formulaire en page lisetContact.php qui permet de rechercher des gens specifiques */ 
+.formulaireRecherche {
+ 	text-align:center;
+ }
+/* affect le champ  */ 
+.formulaire .champRecherche {
+	width:600px; height:35px;
+}
+/* affect les paragraphes de la class .listeContactsRelation*/ 
+.listeContactsRelation p{
+	margin-right:10px;
+}

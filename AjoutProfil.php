@@ -5,7 +5,7 @@
 	 <meta charset="utf-8">
 	 <meta http-equiv="x-ua-compatible" content="ie=edge">
 	 <meta name="viewport" content="width=device-width, initial-scale=1">
-	 <link href="style2.css" rel="stylesheet">
+	 <link href="style.css" rel="stylesheet">
 	 <title>Annuaire - Ajouter un contact</title>
 </head>
 
@@ -36,23 +36,23 @@
 			<table>
 				<tr>
 					<td>URL Photo :</td>
-					<td class="textAlignRight"> <input type="url" name="photoProfil" placeholder="URL de votre photo" required></td>
+					<td class="textAlignLeft"> <input type="url" name="photoProfil" placeholder="URL de votre photo" required></td>
 				</tr>
 				<tr>
 					<td>Nom :</td>
-					<td class="textAlignRight"> <input type="text" name="nom" placeholder="Votre nom" required></td>
+					<td class="textAlignLeft"> <input type="text" name="nom" placeholder="Votre nom" required></td>
 				</tr>
 				<tr>
 					<td>Prénom :</td>
-					<td class="textAlignRight"> <input type="text" name="Prenom" placeholder="Votre prénom" required></td>
+					<td class="textAlignLeft"> <input type="text" name="Prenom" placeholder="Votre prénom" required></td>
 				</tr>
 				<tr>
 					<td>Date de naissance :</td>
-					<td class="textAlignRight"> <input class="date" type="date" name="dateNaissance" required></td>
+					<td class="textAlignLeft"> <input class="date" type="date" name="dateNaissance" required></td>
 				</tr>
 				<tr>
 					<td>Statut :</td>
-					<td class="textAlignRight">
+					<td class="textAlignLeft">
 						<select name="status">
 							<option value="celibataire">Célibataire</option>
 							<option value="en Couple">En couple</option>
@@ -62,7 +62,7 @@
 				</tr>
 				<tr>
 					<td>Hobbies :</td>
-					<td class="textAlignRight">
+					<td class="textAlignLeft">
 <!-- Affiche tout les hobbies existants en BDD et envois un tableau avec les valeurs pour chaque hobby si coché -->
 						<?php
 							foreach($hobbies as $value){
@@ -73,7 +73,7 @@
 				</tr>
 				<tr>
 					<td>Musique :</td>
-					<td class="textAlignRight">
+					<td class="textAlignLeft">
 <!-- Affiche toutes les musiques existants en BDD et envois un tableau avec les valeurs pour chaque musique si coché -->
 						<?php
 							foreach($musique as $value){
@@ -89,11 +89,15 @@
 				</tr>
 
 			</table>
+
+			<div id="connaissances">
+				<h2>Vous les connaissez peut-être :</h2>
+			</div>
+
 <!-- Passe en revue toutes les personnes ajoutées de la base de données, creer un tableau d'envois de donnée
 et recupère l'id de chaque personne afin d'en faire une relation qui sera egal à la valeur des options du select -->
 			<?php
-				foreach($profil as $value){
-					
+				foreach($profil as $value){					
 					echo "<div class=\"Contacts clair\">";
 					echo "<img class=\"imageContact\" src=\"$value->URL_Photo \" alt=\"image de Contact\">" ;
 					echo "<p>"."$value->Nom"." "."$value->Prenom"."</p>"; 
